@@ -29,6 +29,8 @@ function changeState(newState) {
     if (state !== newState) {
         document.getElementsByTagName("body")[0].style.backgroundColor = newState.color
         state = newState
+        if (newState !== STATES.Working)
+            shortBreaks++
         updateTimerActive(false)
         currentTime = state.time
         updateTimer()
@@ -60,7 +62,6 @@ function countdown(by = 1, playChime = true) {
     if (currentTime < 0) {
         if(playChime) playEndChime()
         if (state === STATES.Working) {
-            shortBreaks++
             if (shortBreaks % shortPerLong === 0) changeState(STATES.LongBreak)
             else changeState(STATES.ShortBreak)
         } else {
