@@ -9,7 +9,7 @@ let timerActive = false
 let currentTime = state.time
 let firstTime = true
 
-let shortBreaks = 0
+let shortBreaks = 1
 let shortPerLong = 4
 
 const timerControlButton = document.getElementById("start_stop")
@@ -29,7 +29,7 @@ function changeState(newState) {
     if (state !== newState) {
         document.getElementsByTagName("body")[0].style.backgroundColor = newState.color
         state = newState
-        if (newState !== STATES.Working)
+        if (newState !== STATES.Working && countUp)
             shortBreaks++
         updateTimerActive(false)
         currentTime = state.time
