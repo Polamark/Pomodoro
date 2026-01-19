@@ -29,7 +29,7 @@ function changeState(newState) {
     if (state !== newState) {
         document.getElementsByTagName("body")[0].style.backgroundColor = newState.color
         state = newState
-        if (newState !== STATES.Working && countUp)
+        if (newState !== STATES.Working)
             shortBreaks++
         updateTimerActive(false)
         currentTime = state.time
